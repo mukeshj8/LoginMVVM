@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="cg.nic.loginmvvm.viewmodel.LoginViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/et_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginBottom="27dp"
+            android:ems="10"
+            android:hint="username"
+            android:inputType="textPersonName"
+            android:text="@={viewModel.userEmail}"
+            app:layout_constraintBottom_toTopOf="@+id/et_password"
+            app:layout_constraintStart_toStartOf="@+id/et_password" />
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="238dp"
+            android:ems="10"
+            android:hint="password"
+            android:inputType="textPassword"
+            android:text="@={viewModel.userPassword}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="58dp"
+            android:onClick="@{()-> viewModel.onLoginClicked()}"
+            android:text="LogIn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_password"
+            bind:toastMessage="@{viewModel.toastMessage}" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
